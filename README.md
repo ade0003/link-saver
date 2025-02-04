@@ -8,9 +8,8 @@ The internet is full of interesting articles and useful resources  but it’s ea
 ## 🚀 Quick Start
 
 ### 1️⃣ Install  
-- Get **Link Saver** from the Chrome Web Store 
-- Click **"Add to Chrome"**, then **"Add Extension"**.  
-
+- Get **Link Saver** from the Chrome Web Store
+- 
 ### 2️⃣ Save Links  
 - Click the **Link Saver** icon in your toolbar.  
 - Enter a URL (or let it auto-detect) and click **"Save Link"**.  

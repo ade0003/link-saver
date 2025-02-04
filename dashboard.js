@@ -1,9 +1,9 @@
-// Function to load and display saved links
+// Load and display saved links from storage
 function loadSavedLinks() {
   chrome.storage.local.get("links", (result) => {
     const links = result.links || [];
     const linkContainer = document.getElementById("linkContainer");
-    linkContainer.innerHTML = ""; // Clear container
+    linkContainer.innerHTML = "";
 
     if (links.length === 0) {
       linkContainer.innerHTML = "<p>No saved links yet!</p>";
@@ -12,26 +12,26 @@ function loadSavedLinks() {
         const linkCard = document.createElement("div");
         linkCard.className = "link-card";
         linkCard.innerHTML = `
-                    <a href="${link}" target="_blank">${link}</a>
-                    <button class="remove" data-index="${index}">Remove</button>
-                `;
+                  <a href="${link}" target="_blank" rel="noopener noreferrer">${link}</a>
+                  <button class="remove" data-index="${index}">Remove</button>
+              `;
         linkContainer.appendChild(linkCard);
       });
     }
   });
 }
 
-// Event listener to handle removal of links
+// Listen for clicks on the remove buttons
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("remove")) {
     const index = e.target.getAttribute("data-index");
     chrome.storage.local.get("links", (result) => {
       const links = result.links || [];
-      links.splice(index, 1); // Remove link at the specified index
-      chrome.storage.local.set({ links }, loadSavedLinks); // Save updated links and reload
+      links.splice(index, 1);
+      chrome.storage.local.set({ links }, loadSavedLinks);
     });
   }
 });
 
-// Load links when the DOM content is fully loaded
+// Load links when the dashboard page loads
 document.addEventListener("DOMContentLoaded", loadSavedLinks);
